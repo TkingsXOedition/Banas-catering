@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pageTitle">Banas Catering - Sweet Delights for Every Occasion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #181818; /* Softer Dark Background */
+            color: #EAEAEA; /* Off-white text */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
+
+        .font-pacifico {
+            font-family: 'Pacifico', cursive;
+        }
+
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #181818; /* Match body background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+
+        /* Funny Winking Cupcake Icon */
+        .winking-cupcake-icon {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 25px;
+            animation: bounceCupcake 2s ease-in-out infinite;
+        }
+
+        .cupcake-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .cupcake-base-preloader {
+            width: 70px;
+            height: 40px;
+            background-color: #C6A77E; /* Cupcake base color */
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cupcake-frosting-preloader {
+            width: 85px;
+            height: 50px;
+            background-color: #F8B0C0; /* Light pink frosting */
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            animation: frostingWiggle 2.5s ease-in-out infinite;
+        }
+
+        .cupcake-cherry-preloader {
+            width: 15px;
+            height: 15px;
+            background-color: #D32F2F; /* Red cherry */
+            border-radius: 50%;
+            position: absolute;
+            top: -5px; /* Position on frosting */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+
+        .cupcake-eye {
+            width: 8px;
+            height: 8px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 25px; /* Position on frosting */
+            z-index: 4;
+        }
+        .cupcake-left-eye {
+            left: 30px;
+            animation: winkEye 2s ease-in-out infinite;
+        }
+        .cupcake-right-eye {
+            right: 30px;
+        }
+
+        .cupcake-mouth {
+            width: 20px;
+            height: 10px;
+            border: 2px solid #333;
+            border-top: none;
+            border-radius: 0 0 15px 15px;
+            position: absolute;
+            top: 40px; /* Position on frosting */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+        }
+
+        @keyframes bounceCupcake {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes frostingWiggle {
+            0%, 100% { transform: skewX(0deg); }
+            25% { transform: skewX(-3deg); }
+            75% { transform: skewX(3deg); }
+        }
+
+        @keyframes winkEye {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.1); } /* Simulates a wink */
+        }
+
+
+        .preloader-text {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5rem;
+            color: #E5739D; /* Softer Darker Pink */
+            animation: pulseTextPreloader 1.5s infinite alternate;
+        }
+
+        @keyframes pulseTextPreloader { /* Renamed to avoid conflict if any */
+            from { opacity: 0.8; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.03); }
+        }
+
+        /* Sparkly Text - Reduced Glow */
+        .sparkly-text {
+            color: #E95D9A; /* Softer Hot Pink */
+            text-shadow: 0 0 6px rgba(233, 93, 154, 0.7); /* Single, softer shadow */
+        }
+        .light-pink-text {
+            color: #F8B0C0; /* Softer Light Pink */
+        }
+
+        /* Animated Button */
+        .animated-button {
+            background-image: linear-gradient(to right, #E5739D, #F8B0C0, #E5739D); /* Softer pink gradient */
+            background-size: 200% auto;
+            color: #3A033D; 
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(233, 93, 154, 0.2); 
+            border: none;
+            cursor: pointer;
+        }
+        .animated-button:hover {
+            background-position: right center;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 12px rgba(233, 93, 154, 0.4);
+        }
+        .animated-button:active {
+            transform: translateY(0px) scale(1);
+            box-shadow: 0 2px 4px rgba(233, 93, 154, 0.2);
+        }
+
+        /* Dessert Item Styles */
+        .dessert-card {
+            background-color: #282828; 
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 280px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dessert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(248, 176, 192, 0.15); 
+        }
+        .dessert-visual {
+            width: 120px; 
+            height: 120px; 
+            margin: 0 auto 15px auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dessert-name {
+            font-weight: bold;
+            color: #F8B0C0; 
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Specific Dessert Visuals & Animations (colors already softened) */
+        .donut { width: 100px; height: 100px; background-color: #D8AE7B; border-radius: 50%; position: relative; animation: gentleBob 3s ease-in-out infinite; }
+        .donut-hole { width: 40px; height: 40px; background-color: #282828; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .sprinkle { position: absolute; width: 4px; height: 10px; background-color: #E95D9A; border-radius: 2px; animation: fallSprinkle 2s infinite ease-out; }
+        .sprinkle1 { top: 15%; left: 30%; transform: rotate(20deg); animation-delay: 0s; }
+        .sprinkle2 { top: 25%; left: 65%; transform: rotate(-30deg); background-color: #7FBCE0; animation-delay: 0.5s; }
+        .sprinkle3 { top: 60%; left: 20%; transform: rotate(45deg); background-color: #8BC34A; animation-delay: 1s; }
+        .sprinkle4 { top: 70%; left: 75%; transform: rotate(-10deg); animation-delay: 1.5s; }
+        @keyframes fallSprinkle { 0% { opacity: 1; transform: translateY(-5px) rotate(var(--angle, 0deg)); } 50% { opacity: 0.8; transform: translateY(0px) rotate(var(--angle, 0deg)); } 100% { opacity: 1; transform: translateY(-5px) rotate(var(--angle, 0deg)); } }
+        @keyframes gentleBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+        .cupcake-base { width: 70px; height: 50px; background-color: #C6A77E; border-radius: 0 0 10px 10px; position: relative; top: 25px; }
+        .cupcake-frosting { width: 80px; height: 40px; background-color: #F8B0C0; border-radius: 50% 50% 0 0 / 100% 100% 0 0; position: absolute; top: -15px; left: -5px; animation: frostingWiggle 2.5s ease-in-out infinite; }
+        .cupcake-cherry { width: 15px; height: 15px; background-color: #D32F2F; border-radius: 50%; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); }
+        /* Reusing frostingWiggle from preloader for consistency */
+
+        .forest-cake-slice { width: 90px; height: 70px; position: relative; }
+        .cake-layer { width: 100%; height: 20px; position: absolute; left: 0; transition: transform 0.3s ease; }
+        .forest-cake-slice:hover .cake-layer { transform: translateX(3px); }
+        .layer1 { background-color: #502A13; top: 0; } 
+        .layer2 { background-color: #F0EADA; top: 20px; } 
+        .layer3 { background-color: #502A13; top: 40px; }
+        .white-forest .layer1, .white-forest .layer3 { background-color: #EBE0C5; } 
+        .cake-cherry-ontop { width: 12px; height: 12px; background-color: #D32F2F; border-radius: 50%; position: absolute; top: -8px; left: 40%; }
+
+        .custard-cake { width: 90px; height: 60px; background-color: #FBC02D; border-radius: 10px; position: relative; overflow: hidden; animation: jiggleCake 3s ease-in-out infinite alternate; }
+        .custard-shine { position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%); animation: shine 3s infinite linear; }
+        @keyframes jiggleCake { 0% { transform: skewX(-2deg) skewY(1deg); } 100% { transform: skewX(2deg) skewY(-1deg); } }
+        @keyframes shine { 0% { left: -50%; } 100% { left: 150%; } }
+
+        .chocolate-cake-slice { width: 90px; height: 70px; background-color: #40200D; border-radius: 5px 5px 0 0; position: relative; }
+        .chocolate-drip { width: 15px; height: 25px; background-color: #301808; border-radius: 0 0 50% 50%; position: absolute; top: 68px; left: 30%; animation: drip 4s infinite ease-out; }
+        .chocolate-drip2 { left: 60%; animation-delay: 0.5s; height: 20px; }
+        @keyframes drip { 0% { height: 0px; opacity: 0; } 20% { height: 25px; opacity: 1; } 80% { height: 25px; opacity: 1; } 100% { height: 25px; opacity: 0; transform: translateY(5px); } }
+        .chocolate-icing { width: 100%; height: 15px; background-color: #301808; position: absolute; top: 0; border-radius: 5px 5px 0 0; }
+
+        .fruit-tart-base { width: 90px; height: 25px; background-color: #E8DAB5; border-radius: 50% / 20px; position: absolute; bottom: 30px; }
+        .fruit-tart-cream { width: 80px; height: 20px; background-color: #F5F0E0; border-radius: 50% / 15px; position: absolute; bottom: 35px; left: 5px; }
+        .fruit { width: 12px; height: 12px; border-radius: 50%; position: absolute; animation: fruitPop 0.5s ease-out forwards; opacity: 0; }
+        .fruit1 { background-color: #E5533D; top: -10px; left: 20px; animation-delay: 0.1s; }
+        .fruit2 { background-color: #28A745; top: -15px; left: 40px; animation-delay: 0.2s; }
+        .fruit3 { background-color: #7A43B6; top: -10px; left: 60px; animation-delay: 0.3s; }
+        .fruit-tart-visual:hover .fruit { opacity: 1; transform: translateY(-5px); }
+        @keyframes fruitPop { from { opacity: 0; transform: scale(0.5) translateY(5px); } to { opacity: 1; transform: scale(1) translateY(0px); } }
+
+        .profiterole { width: 70px; height: 70px; background: radial-gradient(circle, #E0D0B0 60%, #D0B080 100%); border-radius: 50%; animation: pulseProfiterole 2s infinite ease-in-out; }
+        @keyframes pulseProfiterole { 0%, 100% { transform: scale(1); box-shadow: 0 0 5px #D0B080; } 50% { transform: scale(1.05); box-shadow: 0 0 15px #E0D0B0; } }
+
+        .drink-glass { width: 60px; height: 90px; background-color: rgba(180, 200, 235, 0.25); border: 2px solid #9FB8D0; border-bottom: none; border-radius: 5px 5px 0 0; position: relative; overflow: hidden; }
+        .drink-liquid { width: 100%; height: 70%; background-color: #F07048; position: absolute; bottom: 0; animation: liquidSway 3s ease-in-out infinite; }
+        .mojito-liquid { background-color: #8FDB8F; }
+        .ice-cube { position: absolute; background-color: rgba(200, 210, 235, 0.6); border-radius: 3px; }
+        .ice1 { width: 15px; height: 15px; bottom: 10px; left: 10px; transform: rotate(15deg); }
+        .ice2 { width: 12px; height: 20px; bottom: 25px; left: 30px; transform: rotate(-10deg); }
+        .mint-leaf { width: 10px; height: 15px; background-color: #277A4F; border-radius: 50% 0; position: absolute; top: 20px; left: 5px; transform: rotate(-20deg); }
+        @keyframes liquidSway { 0%, 100% { border-radius: 0 0 5px 5px / 0 0 10px 10px; } 50% { border-radius: 0 0 5px 5px / 0 0 5px 5px; } }
+        .bubble { position: absolute; width: 5px; height: 5px; background-color: rgba(225,225,235,0.4); border-radius: 50%; animation: rise 2s infinite ease-in; bottom: 5px; }
+        .bubble1 { left: 20%; animation-delay: 0s; }
+        .bubble2 { left: 50%; animation-delay: 0.5s; }
+        .bubble3 { left: 70%; animation-delay: 1s; }
+        @keyframes rise { to { transform: translateY(-80px); opacity: 0; } }
+
+
+        /* Custom Form Styling */
+        .form-input, .form-textarea {
+            background-color: #2a2a2a; 
+            border: 1px solid #E5739D; 
+            color: #EAEAEA; 
+            border-radius: 6px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input:focus, .form-textarea:focus {
+            border-color: #F8B0C0; 
+            box-shadow: 0 0 0 3px rgba(248, 176, 192, 0.25); 
+            outline: none;
+        }
+        .form-label {
+            color: #F8B0C0; 
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .radio-label {
+            color: #EAEAEA; 
+            margin-left: 0.5rem;
+            display: inline-block; /* For better alignment with items list */
+            line-height: 1.6;
+        }
+        .package-item-list {
+            font-size: 0.8rem;
+            color: #B0B0B0; /* Lighter gray for item list */
+            display: block;
+            margin-left: 1.7rem; /* Align with radio text */
+            margin-top: 0.25rem;
+        }
+        input[type="radio"] {
+            accent-color: #E95D9A; 
+            float: left; /* Align radio button to the left of the text */
+            margin-top: 0.3em; /* Adjust vertical alignment */
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #282828; 
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #E5739D; 
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative; /* Added for close button positioning */
+        }
+        .modal-close-button { /* General close button style */
+            color: #F8B0C0; 
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .modal-close-button:hover,
+        .modal-close-button:focus {
+            color: #E95D9A; 
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #E95D9A; 
+            margin-bottom: 1rem;
+        }
+        .modal-body {
+            font-size: 1rem;
+            color: #EAEAEA; 
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Social Icons */
+        .social-icon {
+            fill: #F8B0C0; 
+            width: 28px;
+            height: 28px;
+            transition: fill 0.3s ease, transform 0.3s ease;
+        }
+        .social-icon:hover {
+            fill: #E95D9A; 
+            transform: scale(1.1);
+        }
+
+        header {
+            background-color: rgba(24, 24, 24, 0.8); 
+        }
+        #booking {
+             background-color: #181818; 
+        }
+        #bookingForm {
+            background-color: rgba(40, 40, 40, 0.5); 
+            box-shadow: 0 8px 16px rgba(233, 93, 154, 0.1); 
+        }
+        .hero-gradient {
+             background-image: linear-gradient(to bottom, #181818, rgba(229, 115, 157, 0.15), #181818); 
+        }
+        footer {
+            border-top-color: #333333; 
+        }
+        .footer-text-main {
+            color: #AAAAAA; 
+        }
+        .footer-text-sub {
+             color: #777777; 
+        }
+         .footer-heart {
+            color: #E5739D; 
+        }
+
+        /* Language Selector Styles */
+        #languageSelector {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #181818;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9998; /* Below preloader, above main content */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        #languageSelector.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .language-button {
+            background-color: #E5739D;
+            color: #181818;
+            font-weight: bold;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .language-button:hover {
+            background-color: #F8B0C0;
+            transform: translateY(-3px);
+        }
+
+        /* ---- START: Styles for Human Cartoon Character ---- */
+        #popupCharacter { 
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px; 
+            height: 150px; 
+            cursor: pointer;
+            z-index: 1001; 
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: flex-end; 
+            justify-content: center;
+        }
+        #popupCharacter:hover {
+            transform: scale(1.1);
+        }
+
+        .character-container {
+            position: relative;
+            width: 80px;
+            height: 130px;
+            animation: characterDance 2s ease-in-out infinite;
+        }
+
+        .character-head {
+            width: 50px;
+            height: 50px;
+            background-color: #E0AC69; 
+            border-radius: 50% 50% 40% 40%; 
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 3;
+        }
+
+        .character-hair {
+            width: 60px;
+            height: 40px;
+            background-color: #303030; 
+            position: absolute;
+            top: -15px; 
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50% 50% 20px 20px / 80% 80% 30% 30%; 
+            z-index: 4;
+        }
+        .character-hair::before, .character-hair::after {
+            content: '';
+            position: absolute;
+            background-color: #3A3A3A;
+            border-radius: 50%;
+        }
+        .character-hair::before { 
+            width: 30px;
+            height: 20px;
+            top: -10px;
+            left: 15px;
+            transform: rotate(-10deg);
+        }
+         .character-hair::after { 
+            width: 20px;
+            height: 30px;
+            top: 5px;
+            left: -5px;
+            transform: rotate(15deg);
+        }
+
+
+        .character-eyes {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 5;
+        }
+        .character-eye {
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin: 0 4px;
+            position: relative;
+        }
+        .character-eye::before { 
+            content: '';
+            width: 4px;
+            height: 4px;
+            background-color: #222;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .character-eye.left-eye::after {
+            content: '';
+            position: absolute;
+            top: -1px; 
+            left: -1px;
+            width: 10px;
+            height: 0%;
+            background-color: #E0AC69; 
+            animation: blinkCharacterEye 4s infinite ease-in-out 1s;
+        }
+
+        @keyframes blinkCharacterEye {
+            0%, 90%, 100% { height: 0%; }
+            92.5% { height: 100%; }
+            95% { height: 0%; }
+        }
+
+
+        .character-body {
+            width: 60px;
+            height: 70px;
+            background-color: #4A4A4A; 
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 20px 20px 10px 10px;
+            z-index: 2;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+        
+        .character-arm {
+            width: 15px;
+            height: 50px;
+            background-color: #404040; 
+            position: absolute;
+            bottom: 10px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+        .character-arm.left {
+            left: -5px;
+            transform-origin: top center;
+            animation: waveArmLeft 2s ease-in-out infinite 0.2s;
+        }
+        .character-arm.right {
+            right: -5px;
+            transform-origin: top center;
+            animation: waveArmRight 2s ease-in-out infinite;
+        }
+
+        @keyframes waveArmLeft {
+            0%, 100% { transform: rotate(-15deg); }
+            50% { transform: rotate(10deg); }
+        }
+        @keyframes waveArmRight {
+            0%, 100% { transform: rotate(15deg); }
+            50% { transform: rotate(-10deg); }
+        }
+
+        .character-legs {
+            width: 50px;
+            height: 20px; 
+            position: absolute;
+            bottom: -15px; 
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        .character-leg {
+            width: 20px;
+            height: 20px;
+            background-color: #333; 
+            border-radius: 0 0 5px 5px;
+            position: absolute;
+            bottom: 0;
+        }
+        .character-leg.left {
+            left: 0;
+            animation: legMoveLeft 2s ease-in-out infinite;
+        }
+        .character-leg.right {
+            right: 0;
+            animation: legMoveRight 2s ease-in-out infinite 0.2s;
+        }
+        @keyframes legMoveLeft {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-3px) rotate(5deg); }
+        }
+        @keyframes legMoveRight {
+            0%, 100% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-3px) rotate(-5deg); }
+        }
+
+
+        @keyframes characterDance {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(-3deg); }
+            50% { transform: translateY(0px) rotate(0deg); }
+            75% { transform: translateY(-5px) rotate(3deg); }
+        }
+        
+        .character-speech-bubble { 
+            position: absolute;
+            bottom: 160px; 
+            right: -20px; 
+            background-color: #fff;
+            color: #3A033D; 
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1002;
+        }
+        .character-speech-bubble.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .character-speech-bubble::after { 
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 35px; 
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 12px solid #fff;
+        }
+
+        /* ---- START: MODAL REDESIGN ---- */
+        #characterModal { 
+            display: none;
+            position: fixed;
+            z-index: 1050; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(10, 10, 20, 0.85); /* Dark blue/purple overlay */
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px); 
+            animation: fadeInModal 0.4s ease-out;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .character-modal-content { 
+            background: linear-gradient(145deg, #1a1a2e, #16213e); /* Deep blue/purple gradient */
+            color: #EAEAEA;
+            margin: auto;
+            padding: 35px; 
+            border: 1px solid #5372F0; /* Vibrant blue border */
+            border-radius: 18px; 
+            width: 90%;
+            max-width: 400px; /* Slightly smaller max-width */
+            text-align: center;
+            box-shadow: 0 0 25px rgba(83, 114, 240, 0.3), 0 0 0 2px rgba(83, 114, 240, 0.2); /* Blue glow effect */
+            position: relative; 
+            transform: scale(0.9);
+            animation: popInModalStylish 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; /* More dynamic pop-in */
+        }
+
+        @keyframes popInModalStylish {
+            0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .character-modal-content p {
+            margin-bottom: 25px;
+            font-size: 1.35rem; 
+            font-weight: 600; /* Slightly bolder */
+            color: #C0D0F0; /* Light grayish blue text */
+            font-family: 'Inter', sans-serif; /* Switched to Inter for a modern feel */
+            line-height: 1.6;
+        }
+
+        /* New button style for the modal */
+        .character-modal-content .modal-action-button { 
+            background: linear-gradient(to right, #5372F0, #3A55C4); /* Blue gradient */
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+            padding: 14px 28px;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(83, 114, 240, 0.3);
+            border: none;
+            cursor: pointer;
+            display: inline-block; /* To allow margin auto and text-align center from parent */
+            text-decoration: none; /* For a tag if used */
+            margin-top: 15px;
+            width: auto; /* Auto width based on content */
+            min-width: 180px; /* Minimum width */
+        }
+        .character-modal-content .modal-action-button:hover {
+            background: linear-gradient(to right, #3A55C4, #5372F0); /* Reverse gradient on hover */
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(83, 114, 240, 0.4);
+        }
+         .character-modal-content .modal-action-button:active {
+            transform: translateY(0px) scale(1);
+            box-shadow: 0 3px 10px rgba(83, 114, 240, 0.3);
+        }
+
+
+        .character-modal-close-button { 
+            position: absolute;
+            top: 15px; /* Adjusted position */
+            right: 15px; /* Adjusted position */
+            font-size: 26px; 
+            font-weight: bold;
+            color: #A0B0E0; /* Lighter blue for close button */
+            background: transparent; /* Transparent background */
+            border: none;
+            cursor: pointer;
+            line-height: 1;
+            padding: 5px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .character-modal-close-button:hover {
+            color: #5372F0; /* Vibrant blue on hover */
+            transform: scale(1.2) rotate(90deg); /* Added rotation */
+        }
+        /* ---- END: MODAL REDESIGN ---- */
+        /* ---- END: Styles for Human Cartoon Character ---- */
+
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <div id="preloader">
+        <div class="winking-cupcake-icon">
+            <div class="cupcake-wrapper">
+                <div class="cupcake-frosting-preloader"></div>
+                <div class="cupcake-base-preloader"></div>
+                <div class="cupcake-cherry-preloader"></div>
+                <div class="cupcake-eye cupcake-left-eye"></div>
+                <div class="cupcake-eye cupcake-right-eye"></div>
+                <div class="cupcake-mouth"></div>
+            </div>
+        </div>
+        <p class="preloader-text" data-i18n="preloaderText">Whipping up your event details...</p>
+    </div>
+
+    <div id="languageSelector">
+        <h2 class="text-3xl font-bold mb-8 text-white" data-i18n="chooseLanguage">Choose Your Language</h2>
+        <button class="language-button" onclick="setLanguage('en')">English</button>
+        <button class="language-button" onclick="setLanguage('am')">አማርኛ (Amharic)</button>
+    </div>
+
+    <header class="py-6 px-4 md:px-8 sticky top-0 z-50 backdrop-blur-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl md:text-4xl font-pacifico sparkly-text">Banas Catering</h1>
+            <div class="flex space-x-4 items-center">
+                <a href="https://www.instagram.com/banas.decor?igsh=NHJ3dWNjYzdpZWh1" target="_blank" aria-label="Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.802C9.042 3.965 8.71 3.977 7.437 4.03c-2.858.132-4.001 1.274-4.137 4.137-.053 1.273-.064 1.606-.064 4.83s.011 3.556.064 4.83c.136 2.861 1.279 4.004 4.137 4.137 1.272.053 1.605.064 4.83.064s3.557-.011 4.83-.064c2.858-.132 4.001-1.275 4.137-4.137.053-1.273.064-1.605.064-4.83s-.011-3.556-.064-4.83c-.136-2.862-1.279-4.005-4.137-4.137-1.272-.053-1.605-.064-4.83-.064zm0 2.881c-2.485 0-4.5 2.015-4.5 4.5s2.015 4.5 4.5 4.5 4.5-2.015 4.5-4.5-2.015-4.5-4.5-4.5zm0 7.198c-1.491 0-2.698-1.207-2.698-2.698s1.207-2.698 2.698-2.698 2.698 1.207 2.698 2.698-1.207 2.698-2.698 2.698zm4.808-7.198c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/></svg>
+                </a>
+                <a href="http://t.me/banasdecor" target="_blank" aria-label="Telegram">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.422 4.468a2.316 2.316 0 0 0-1.095-.826C19.033 3.226 13.93 1.584 9.08.265c-1.137-.305-2.337-.57-3.418-.022-.95.484-1.095 1.583-.973 2.687.17 1.586.49 4.075.764 6.042.29 2.092.608 4.222.973 5.864.364 1.643.88 2.464 1.702 2.71.822.245 1.83-.048 2.687-.51.78-.414 1.383-.905 2.092-1.491.994-.838 2.216-1.854 3.297-2.758 1.436-1.22 2.517-2.216 3.297-3.048.932-.995 1.335-1.988.787-3.297-.22-.535-.633-1.022-1.095-1.443zm-2.78 2.065c-.147.147-.342.318-.56.51-.847.738-1.83 1.643-2.934 2.565-.973.81-1.947 1.63-2.822 2.36l-3.345 2.822c-.098.098-.22.17-.365.17-.22 0-.415-.122-.488-.342a2.404 2.404 0 0 1-.17-.832c-.342-1.854-.634-3.733-.88-5.586-.27-1.988-.536-4.027-.684-5.373-.05-.488.072-1.046.44-1.336.342-.293.857-.415 1.336-.195.95.44 5.93 2.016 7.08 2.464.635.245.974.61.974 1.023.023.414-.17.786-.44 1.07z"/></svg>
+                </a>
+                <a href="https://wa.me/251982411093" target="_blank" aria-label="WhatsApp">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.38 1.25 4.85L2 22l5.25-1.38c1.47.79 3.1 1.25 4.79 1.25h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 1.82c4.49 0 8.14 3.65 8.14 8.14s-3.65 8.14-8.14 8.14c-1.54 0-3-.42-4.32-1.16l-.31-.18-3.21.84.86-3.12-.2-.33c-.8-1.34-1.27-2.93-1.27-4.59 0-4.49 3.65-8.14 8.14-8.14zm4.52 9.13c-.25-.12-1.47-.73-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.06-.39-2.02-1.25-.75-.66-1.25-1.48-1.4-1.73-.14-.25-.02-.38.1-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.37 1 2.54.12.17 1.73 2.64 4.2 3.72.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.14-1.18-.05-.12-.2-.19-.44-.31z"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-16 md:py-24 px-4 text-center hero-gradient">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 light-pink-text" data-i18n="welcomeHeader">Welcome to <span class="sparkly-text font-pacifico">Banas Catering</span>!</h2>
+        <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto" data-i18n="welcomeText">Indulge in our exquisite selection of handcrafted desserts and refreshing drinks, perfect for making your events unforgettable. Let us sweeten your celebrations!</p>
+        <a href="#booking" class="animated-button text-lg" data-i18n="bookEventButton">Book Your Event</a>
+    </section>
+
+    <section id="menu" class="py-16 px-4 md:px-8">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 sparkly-text" data-i18n="menuHeader">Our Delicious Menu</h2>
+            
+            <h3 class="text-2xl md:text-3xl font-semibold text-center mb-8 light-pink-text" data-i18n="dessertsHeader">Desserts</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
+                <div class="dessert-card">
+                    <div class="dessert-visual"> <div class="donut"> <div class="donut-hole"></div> <div class="sprinkle sprinkle1" style="--angle: 20deg;"></div> <div class="sprinkle sprinkle2" style="--angle: -30deg;"></div> <div class="sprinkle sprinkle3" style="--angle: 45deg;"></div> <div class="sprinkle sprinkle4" style="--angle: -10deg;"></div> </div> </div> <p class="dessert-name" data-i18n="miniDonut">Mini Donut</p>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-visual"> <div style="position: relative; width: 80px; height: 90px;"> <div class="cupcake-frosting"></div> <div class="cupcake-base"></div> <div class="cupcake-cherry"></div> </div> </div> <p class="dessert-name" data-i18n="miniCupcake">Mini Cupcake</p>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-visual"> <div class="forest-cake-slice"> <div class="cake-layer layer1"></div> <div class="cake-layer layer2"></div> <div class="cake-layer layer3"></div> <div class="cake-cherry-ontop"></div> </div> </div> <p class="dessert-name" data-i18n="blackForestSlice">Black Forest Slice</p>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-visual"> <div class="forest-cake-slice white-forest"> <div class="cake-layer layer1"></div> <div class="cake-layer layer2"></div> <div class="cake-layer layer3"></div> <div class="cake-cherry-ontop" style="background-color: #8BC34A;"></div> </div> </div> <p class="dessert-name" data-i18n="whiteForestSlice">White Forest Slice</p>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-visual"> <div class="custard-cake"> <div class="custard-shine"></div> </div> </div> <p class="dessert-name" data-i18n="custardCakeSlice">Custard Cake Slice</p>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-visual"> <div class="chocolate-cake-slice"> <div class="chocolate-icing"></div> <div class="chocolate-drip"></div> <div class="chocolate-drip chocolate-drip2"></div> </div> </div> <p class="dessert-name" data-i18n="chocolateCakeSlice">Chocolate Cake Slice</p>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-visual fruit-tart-visual" style="height: 80px;"> <div class="fruit-tart-base"></div> <div class="fruit-tart-cream"></div> <div class="fruit fruit1"></div> <div class="fruit fruit2"></div> <div class="fruit fruit3"></div> </div> <p class="dessert-name" data-i18n="miniFruitTart">Mini Fruit Tart</p>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-visual"> <div class="profiterole"></div> </div> <p class="dessert-name" data-i18n="profileRoll">Profile Roll</p>
+                </div>
+            </div>
+
+            <h3 class="text-2xl md:text-3xl font-semibold text-center mb-8 light-pink-text" data-i18n="drinksHeader">Drinks</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div class="dessert-card">
+                    <div class="dessert-visual"> <div class="drink-glass"> <div class="drink-liquid"></div> <div class="ice-cube ice1"></div> <div class="ice-cube ice2"></div> <div class="bubble bubble1"></div> <div class="bubble bubble2"></div> </div> </div> <p class="dessert-name" data-i18n="fruitPunch">Fruit Punch</p>
+                </div>
+                <div class="dessert-card">
+                    <div class="dessert-visual"> <div class="drink-glass"> <div class="drink-liquid mojito-liquid"></div> <div class="mint-leaf"></div> <div class="ice-cube ice1" style="bottom: 5px;"></div> <div class="bubble bubble1"></div> <div class="bubble bubble2"></div> <div class="bubble bubble3"></div> </div> </div> <p class="dessert-name" data-i18n="mojito">Mojito</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="py-16 px-4 md:px-8">
+        <div class="container mx-auto max-w-2xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 sparkly-text" data-i18n="bookingHeader">Book Our Services</h2>
+            <form id="bookingForm" class="p-6 md:p-8 rounded-lg">
+                <div class="mb-6">
+                    <label for="name" class="form-label" data-i18n="yourNameLabel">Your Name:</label>
+                    <input type="text" id="name" name="name" class="form-input" required data-i18n-placeholder="enterYourName" placeholder="Enter your name">
+                </div>
+
+                <div class="mb-6">
+                    <label for="eventDateTime" class="form-label" data-i18n="eventDateTimeLabel">Event Date and Time:</label>
+                    <input type="datetime-local" id="eventDateTime" name="eventDateTime" class="form-input" required>
+                </div>
+
+                <p class="form-label mb-3" data-i18n="selectPackageLabel">Select a Package:</p>
+                <div class="space-y-4 mb-6"> 
+                    <div class="package-option">
+                        <input type="radio" id="pkg25" name="package" value="25_19000" 
+                               data-details-en="25 people - 19,000 ETB. Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito"
+                               data-details-am="25 ሰዎች - 19,000 ብር። የሚያካትተው: ሚኒ ዶናት, ሚኒ ካፕኬክ, ብላክ ፎረስ, ዋይት ፎረስ, ኩስታርድ ኬክ, ቸኮሌት ኬክ, ሚኒ ፍሩት ታርት, ፕሮፋይል ሮል, ፍሩት ፓንች, ሞጂቶ"
+                               checked>
+                        <label for="pkg25" class="radio-label">
+                            <span data-i18n="pkg25Label">25 People - 19,000 ETB</span>
+                            <span class="package-item-list" data-i18n="pkg25Details">Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito</span>
+                        </label>
+                    </div>
+                    <div class="package-option">
+                        <input type="radio" id="pkg35" name="package" value="35_25000"
+                               data-details-en="35 people - 25,000 ETB. Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito"
+                               data-details-am="35 ሰዎች - 25,000 ብር። የሚያካትተው: ሚኒ ዶናት, ሚኒ ካፕኬክ, ብላክ ፎረስ, ዋይት ፎረስ, ኩስታርድ ኬክ, ቸኮሌት ኬክ, ሚኒ ፍሩት ታርት, ፕሮፋይል ሮል, ፍሩት ፓንች, ሞጂቶ">
+                        <label for="pkg35" class="radio-label">
+                            <span data-i18n="pkg35Label">35 People - 25,000 ETB</span>
+                            <span class="package-item-list" data-i18n="pkg35Details">Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito</span>
+                        </label>
+                    </div>
+                    <div class="package-option">
+                        <input type="radio" id="pkg45" name="package" value="45_30000"
+                               data-details-en="45 people - 30,000 ETB. Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito"
+                               data-details-am="45 ሰዎች - 30,000 ብር። የሚያካትተው: ሚኒ ዶናት, ሚኒ ካፕኬክ, ብላክ ፎረስ, ዋይት ፎረስ, ኩስታርድ ኬክ, ቸኮሌት ኬክ, ሚኒ ፍሩት ታርት, ፕሮፋይል ሮል, ፍሩት ፓንች, ሞጂቶ">
+                        <label for="pkg45" class="radio-label">
+                            <span data-i18n="pkg45Label">45 People - 30,000 ETB</span>
+                            <span class="package-item-list" data-i18n="pkg45Details">Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito</span>
+                        </label>
+                    </div>
+                    <div class="package-option">
+                        <input type="radio" id="pkg55" name="package" value="55_35000"
+                               data-details-en="55 people - 35,000 ETB. Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito"
+                               data-details-am="55 ሰዎች - 35,000 ብር። የሚያካትተው: ሚኒ ዶናት, ሚኒ ካፕኬክ, ብላክ ፎረስ, ዋይት ፎረስ, ኩስታርድ ኬክ, ቸኮሌት ኬክ, ሚኒ ፍሩት ታርት, ፕሮፋይል ሮል, ፍሩት ፓንች, ሞጂቶ">
+                        <label for="pkg55" class="radio-label">
+                            <span data-i18n="pkg55Label">55 People - 35,000 ETB</span>
+                            <span class="package-item-list" data-i18n="pkg55Details">Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito</span>
+                        </label>
+                    </div>
+                    <div class="package-option">
+                        <input type="radio" id="pkgCustom" name="package" value="custom">
+                        <label for="pkgCustom" class="radio-label">
+                            <span data-i18n="pkgCustomLabel">Custom (more than 55 people)</span>
+                             <span class="package-item-list" data-i18n="pkgCustomDetails">Menu items will be discussed.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="customBookingDetails" class="hidden space-y-4 mb-6">
+                    <div>
+                        <label for="customPeople" class="form-label" data-i18n="customPeopleLabel">Number of People (min. 56):</label>
+                        <input type="number" id="customPeople" name="customPeople" class="form-input" min="56" data-i18n-placeholder="customPeoplePlaceholder" placeholder="e.g., 70">
+                    </div>
+                    <div>
+                        <label for="customDescription" class="form-label" data-i18n="customDescriptionLabel">Description / Special Requests (e.g., specific menu items):</label>
+                        <textarea id="customDescription" name="customDescription" rows="4" class="form-textarea" data-i18n-placeholder="customDescriptionPlaceholder" placeholder="Tell us more about your event..."></textarea>
+                    </div>
+                </div>
+                
+                <p class="form-label mb-3" data-i18n="preferredContactLabel">Preferred Contact Method:</p>
+                <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0">
+                    <button type="button" id="submitWhatsApp" class="animated-button w-full" data-i18n="bookWhatsApp">Book via WhatsApp</button>
+                    <button type="button" id="submitTelegram" class="animated-button w-full" data-i18n="bookTelegram">Book via Telegram</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-8 text-center">
+        <p class="footer-text-main">&copy; <span id="currentYear"></span> Banas Catering. <span data-i18n="allRightsReserved">All Rights Reserved.</span></p>
+        <p class="footer-text-sub mt-1" data-i18n="designedWith">Designed with <span class="footer-heart">&hearts;</span></p>
+    </footer>
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-button" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" class="modal-title" data-i18n="modalTitle">Booking Details Prepared!</h3>
+            <p id="modalMessage" class="modal-body" data-i18n="modalMessage">Your booking details are ready. Click the button below to proceed.</p>
+            <a id="modalActionLink" href="#" target="_blank" class="animated-button" onclick="closeModal()" data-i18n="proceedToChat">Proceed to Chat</a>
+        </div>
+    </div>
+    
+    <div id="popupCharacter"> <div class="character-container">
+            <div class="character-hair"></div>
+            <div class="character-head">
+                <div class="character-eyes">
+                    <div class="character-eye left-eye"></div>
+                    <div class="character-eye right-eye"></div>
+                </div>
+            </div>
+            <div class="character-body"></div>
+            <div class="character-arm left"></div>
+            <div class="character-arm right"></div>
+            <div class="character-legs">
+                <div class="character-leg left"></div>
+                <div class="character-leg right"></div>
+            </div>
+        </div>
+        <div id="characterSpeechBubble" class="character-speech-bubble">Click me!</div> </div>
+
+    <div id="characterModal"> 
+        <div class="character-modal-content"> 
+            <button id="characterModalCloseButton" class="character-modal-close-button">&times;</button> 
+            <p>I want a website like this!</p>
+            <button id="characterContinueButton" class="modal-action-button">Continue</button> 
+        </div>
+    </div>
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                pageTitle: "Banas Catering - Sweet Delights for Every Occasion",
+                preloaderText: "Whipping up your event details...",
+                chooseLanguage: "Choose Your Language",
+                welcomeHeader: "Welcome to Banas Catering!",
+                welcomeText: "Indulge in our exquisite selection of handcrafted desserts and refreshing drinks, perfect for making your events unforgettable. Let us sweeten your celebrations!",
+                bookEventButton: "Book Your Event",
+                menuHeader: "Our Delicious Menu",
+                dessertsHeader: "Desserts",
+                miniDonut: "Mini Donut",
+                miniCupcake: "Mini Cupcake",
+                blackForestSlice: "Black Forest Slice",
+                whiteForestSlice: "White Forest Slice",
+                custardCakeSlice: "Custard Cake Slice",
+                chocolateCakeSlice: "Chocolate Cake Slice",
+                miniFruitTart: "Mini Fruit Tart",
+                profileRoll: "Profile Roll",
+                drinksHeader: "Drinks",
+                fruitPunch: "Fruit Punch",
+                mojito: "Mojito",
+                bookingHeader: "Book Our Services",
+                yourNameLabel: "Your Name:",
+                enterYourName: "Enter your name",
+                eventDateTimeLabel: "Event Date and Time:",
+                selectPackageLabel: "Select a Package:",
+                pkg25Label: "25 People - 19,000 ETB",
+                pkg25Details: "Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito",
+                pkg35Label: "35 People - 25,000 ETB",
+                pkg35Details: "Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito",
+                pkg45Label: "45 People - 30,000 ETB",
+                pkg45Details: "Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito",
+                pkg55Label: "55 People - 35,000 ETB",
+                pkg55Details: "Includes: Mini Donut, Mini Cupcake, Black Forest, White Forest, Custard Cake, Chocolate Cake, Mini Fruit Tart, Profile Roll, Fruit Punch, Mojito",
+                pkgCustomLabel: "Custom (more than 55 people)",
+                pkgCustomDetails: "Menu items will be discussed.",
+                customPeopleLabel: "Number of People (min. 56):",
+                customPeoplePlaceholder: "e.g., 70",
+                customDescriptionLabel: "Description / Special Requests (e.g., specific menu items):",
+                customDescriptionPlaceholder: "Tell us more about your event...",
+                preferredContactLabel: "Preferred Contact Method:",
+                bookWhatsApp: "Book via WhatsApp",
+                bookTelegram: "Book via Telegram",
+                allRightsReserved: "All Rights Reserved.",
+                designedWith: "Designed with",
+                modalTitle: "Booking Details Prepared!",
+                modalMessage: "Your booking details are ready. Click the button below to proceed.",
+                proceedToChat: "Proceed to Chat",
+                inputRequired: "Input Required",
+                pleaseEnterName: "Please enter your name before submitting.",
+                ok: "OK",
+                customPeopleRequired: "For custom bookings, please enter at least 56 people.",
+                eventDateTimeRequired: "Please select your event date and time.",
+                redirectingWhatsApp: "Redirecting to WhatsApp...",
+                bookingDetailsReady: "Your booking details for Banas Catering:",
+                clickProceedWhatsApp: "Click 'Proceed to WhatsApp' to send your message.",
+                proceedToWhatsApp: "Proceed to WhatsApp",
+                redirectingTelegram: "Redirecting to Telegram...",
+                bookingDetailsReadyTelegram: "Your booking details for Banas Catering are ready to be shared:",
+                clickProceedTelegram: "Click 'Proceed to Telegram'. You'll be taken to a Telegram page to forward this message. Please search for and send it to '<strong>banasdecor</strong>' (Banas Catering).",
+                proceedToTelegram: "Proceed to Telegram",
+                customerWillSpecify: "(Customer will specify menu items)",
+                lookingForward: "Looking forward to discussing this further!",
+                characterClickMessages: [
+                    "Click me!",
+                    "Want a cool site like this? Click me!",
+                    "Let's chat! Click me!"
+                ],
+                newCateringInquiry: "New Catering Inquiry from", 
+                typeCustomBooking: "Type: Custom Booking", 
+                numberOfPeople: "Number of People", 
+                descriptionRequests: "Description/Requests", 
+                packageSelected: "Package Selected", 
+            },
+            am: {
+                pageTitle: "ባናስ ኬተሪንግ - ለእያንዳንዱ ዝግጅት ጣፋጭ ምግቦች",
+                preloaderText: "የዝግጅትዎን ዝርዝሮችዎን እያዘጋጀን ነው...",
+                chooseLanguage: "ቋንቋዎን ይምረጡ",
+                welcomeHeader: "እንኳን ወደ ባናስ ኬተሪንግ ቡኪንግ ፔጅ በደህና መጡ!",
+                welcomeText: "ዝግጅቶችዎን የማይረሳ ለማድረግ ፍጹም የሆኑትን በእጅ የተሰሩ ጣፋጭ ምግቦችን እና መንፈስን የሚያድሱ መጠጦችን ለማግኸት ቡክ ያድርጉ። ዝግጅታችሁን ያማረ እናርግላችሁ!",
+                bookEventButton: "ኬተሪንግ ለማስያዝ ተጫኑኽ",
+                menuHeader: "የእኛ ኬተሪንግ በዉስጡ የሚይዘዉ",
+                dessertsHeader: "ዲዘርት",
+                miniDonut: "ሚኒ ዶናት",
+                miniCupcake: "ሚኒ ካፕኬክ",
+                blackForestSlice: "ብላክ ፎረስ ",
+                whiteForestSlice: "ዋይት ፎረስ ",
+                custardCakeSlice: "ኩስታርድ ኬክ ",
+                chocolateCakeSlice: "ቸኮሌት ኬክ ",
+                miniFruitTart: "ሚኒ ፍሩት ታርት",
+                profileRoll: "ፕሮፋይል ሮል",
+                drinksHeader: "መጠጦች",
+                fruitPunch: "ፍሩት ፓንች",
+                mojito: "ሞጂቶ",
+                bookingHeader: "እዚጋ ቡክ ያድርጉ",
+                yourNameLabel: "የእርስዎ ስም:",
+                enterYourName: "ስምዎን ያስገቡ",
+                eventDateTimeLabel: "የዝግጅቱ ቀን እና ሰዓት:",
+                selectPackageLabel: "ጥቅል ይምረጡ:",
+                pkg25Label: "25 ሰዎች - 19,000 ብር",
+                pkg25Details: "የሚያካትተው: ሚኒ ዶናት, ሚኒ ካፕኬክ, ብላክ ፎረስ, ዋይት ፎረስ, ኩስታርድ ኬክ, ቸኮሌት ኬክ, ሚኒ ፍሩት ታርት, ፕሮፋይል ሮል, ፍሩት ፓንች, ሞጂቶ",
+                pkg35Label: "35 ሰዎች - 25,000 ብር",
+                pkg35Details: "የሚያካትተው: ሚኒ ዶናት, ሚኒ ካፕኬክ, ብላክ ፎረስ, ዋይት ፎረስ, ኩስታርድ ኬክ, ቸኮሌት ኬክ, ሚኒ ፍሩት ታርት, ፕሮፋይል ሮል, ፍሩት ፓንች, ሞጂቶ",
+                pkg45Label: "45 ሰዎች - 30,000 ብር",
+                pkg45Details: "የሚያካትተው: ሚኒ ዶናት, ሚኒ ካፕኬክ, ብላክ ፎረስ, ዋይት ፎረስ, ኩስታርድ ኬክ, ቸኮሌት ኬክ, ሚኒ ፍሩት ታርት, ፕሮፋይል ሮል, ፍሩት ፓንች, ሞጂቶ",
+                pkg55Label: "55 ሰዎች - 35,000 ብር",
+                pkg55Details: "የሚያካትተው: ሚኒ ዶናት, ሚኒ ካፕኬክ, ብላክ ፎረስ, ዋይት ፎረስ, ኩስታርድ ኬክ, ቸኮሌት ኬክ, ሚኒ ፍሩት ታርት, ፕሮፋይል ሮል, ፍሩት ፓንች, ሞጂቶ",
+                pkgCustomLabel: "ብጁ (ከ 55 ሰዎች በላይ)",
+                pkgCustomDetails: "የምናሌ እቃዎች ይወያያሉ።",
+                customPeopleLabel: "የሰዎች ብዛት (ዝቅተኛ 56):",
+                customPeoplePlaceholder: "ለምሳሌ, 70",
+                customDescriptionLabel: "መግለጫ / ልዩ ጥያቄዎች (ለምሳሌ, በርገር መጨመር እፈልጋለሁ):",
+                customDescriptionPlaceholder: "ስለ ዝግጅትዎ የበለጠ ይንገሩን...",
+                preferredContactLabel: "ተመራጭ የ ፕሮግራም ማስያዣ:",
+                bookWhatsApp: "በዋትስአፕ ያስይዙ",
+                bookTelegram: "በቴሌግራም ያስይዙ",
+                allRightsReserved: "መብቱ በህግ የተጠበቀ ነው።",
+                designedWith: "በተሰራ",
+                modalTitle: "ዝግጅትዎ እንዲ ተዘጋጅትዋል!",
+                modalMessage: "የቦታ ማስያዣ ዝርዝሮችዎ ዝግጁ ናቸው። ለመቀጠል ከታች ያለውን ቁልፍ ይጫኑ።",
+                proceedToChat: "ወደ ውይይት ይቀጥሉ",
+                inputRequired: "መረጃ ያስፈልጋል",
+                pleaseEnterName: "ከማስገባትዎ በፊት እባክዎ ስምዎን ያስገቡ።",
+                ok: "እሺ",
+                customPeopleRequired: "ለብዙ ሰዎች ቦታ ማስያዣዎች፣ እባክዎ ቢያንስ 56 ሰዎችን ያስገቡ።",
+                eventDateTimeRequired: "እባክዎ የዝግጅትዎን ቀን እና ሰዓት ይምረጡ።",
+                redirectingWhatsApp: "ወደ ዋትስአፕ በመምራት ላይ...",
+                bookingDetailsReady: "ለባናስ ኬተሪንግ የቦታ ማስያዣ ዝርዝሮችዎ:",
+                clickProceedWhatsApp: "መልዕክትዎን ለመላክ 'ወደ ዋትስአፕ ይቀጥሉ' የሚለውን ይጫኑ።",
+                proceedToWhatsApp: "ወደ ዋትስአፕ ይቀጥሉ",
+                redirectingTelegram: "ወደ ቴሌግራም በመምራት ላይ...",
+                bookingDetailsReadyTelegram: "ለባናስ ኬተሪንግ የቦታ ማስያዣ ዝርዝሮችዎ ለመጋራት ዝግጁ ናቸው:",
+                clickProceedTelegram: "‘ወደ ቴሌግራም ይቀጥሉ’ የሚለውን ይጫኑ። ይህን መልዕክት ለማስተላለፍ ወደ ቴሌግራም ገጽ ይወሰዳሉ። እባክዎ '<strong>banasdecor</strong>' (ባናስ ኬተሪንግ) ብለው ይፈልጉ እና ይላኩ።",
+                proceedToTelegram: "ወደ ቴሌግራም ይቀጥሉ",
+                customerWillSpecify: "(ይኽ ዝግጅትዎን ይገልጻል)",
+                lookingForward: "ለተጨማሪ ውይይት በጉጉት እንጠብቃለን!",
+                 characterClickMessages: [
+                    "እኔን ጠቅ አድርግ!",
+                    "እንደዚህ ያለ ምርጥ ድረ-ገጽ ይፈልጋሉ? እኔን ጠቅ ያድርጉ!",
+                    "እስኪ እናውራ! እኔን ጠቅ ያድርጉ!"
+                ],
+                newCateringInquiry: "አዲስ የኬተሪንግ ጥያቄ ከ",
+                typeCustomBooking: "ዓይነት: ብጁ ማስያዣ",
+                numberOfPeople: "የሰዎች ብዛት",
+                descriptionRequests: "መግለጫ/ጥያቄዎች",
+                packageSelected: "የተመረጠው ፓኬጅ",
+            }
+        };
+
+        let currentLanguage = 'en'; 
+        let characterMessageInterval; 
+
+        function applyTranslations() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLanguage][key] && typeof translations[currentLanguage][key] === 'string') { 
+                    element.textContent = translations[currentLanguage][key];
+                }
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[currentLanguage][key]) {
+                    element.placeholder = translations[currentLanguage][key];
+                }
+            });
+
+            document.querySelectorAll('.package-option input[type="radio"]').forEach(radio => {
+                const labelSpan = radio.nextElementSibling.querySelector('span[data-i18n^="pkg"]');
+                const detailsSpan = radio.nextElementSibling.querySelector('.package-item-list');
+                
+                if (radio.value !== 'custom') {
+                    const labelKey = labelSpan.getAttribute('data-i18n');
+                    const detailsKey = detailsSpan.getAttribute('data-i18n');
+                    
+                    if (translations[currentLanguage][labelKey]) {
+                        labelSpan.textContent = translations[currentLanguage][labelKey];
+                    }
+                    if (translations[currentLanguage][detailsKey]) {
+                        detailsSpan.textContent = translations[currentLanguage][detailsKey];
+                    }
+                    radio.setAttribute('data-details', radio.getAttribute(`data-details-${currentLanguage}`));
+                } else {
+                    const customLabelKey = labelSpan.getAttribute('data-i18n');
+                    const customDetailsKey = detailsSpan.getAttribute('data-i18n');
+                    if (translations[currentLanguage][customLabelKey]) {
+                        labelSpan.textContent = translations[currentLanguage][customLabelKey];
+                    }
+                    if (translations[currentLanguage][customDetailsKey]) {
+                        detailsSpan.textContent = translations[currentLanguage][customDetailsKey];
+                    }
+                }
+            });
+
+            document.title = translations[currentLanguage].pageTitle;
+            updateCharacterSpeechBubble(); 
+        }
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            applyTranslations();
+            document.getElementById('languageSelector').classList.remove('active');
+            document.body.style.overflow = ''; 
+        }
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const languageSelector = document.getElementById('languageSelector');
+
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    languageSelector.classList.add('active'); 
+                    document.body.style.overflow = 'hidden'; 
+                }, 500);
+            }, 2000); 
+            startCharacterSpeechInterval(); 
+        });
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const bookingForm = document.getElementById('bookingForm');
+        const customBookingDetails = document.getElementById('customBookingDetails');
+        const packageRadios = document.querySelectorAll('input[name="package"]');
+        const nameInput = document.getElementById('name');
+        const eventDateTimeInput = document.getElementById('eventDateTime'); 
+        const customPeopleInput = document.getElementById('customPeople');
+        const customDescriptionInput = document.getElementById('customDescription');
+
+        packageRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'custom') {
+                    customBookingDetails.classList.remove('hidden');
+                    customPeopleInput.required = true;
+                } else {
+                    customBookingDetails.classList.add('hidden');
+                    customPeopleInput.required = false;
+                    customPeopleInput.value = ''; 
+                    customDescriptionInput.value = '';
+                }
+            });
+        });
+
+        const modal = document.getElementById('confirmationModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const modalActionLink = document.getElementById('modalActionLink');
+
+        function showModal(titleKey, messageKey, actionUrl, actionTextKey, extraMessage = '') {
+            modalTitle.textContent = translations[currentLanguage][titleKey];
+            modalMessage.innerHTML = translations[currentLanguage][messageKey] + extraMessage; 
+            modalActionLink.href = actionUrl;
+            modalActionLink.textContent = translations[currentLanguage][actionTextKey];
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+        
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+            const charMod = document.getElementById('characterModal');
+            if (event.target == charMod) {
+                charMod.style.display = 'none';
+            }
+        });
+
+
+        function handleSubmit(platform) {
+            if (!nameInput.value.trim()) {
+                showModal("inputRequired", "pleaseEnterName", "#", "ok");
+                modalActionLink.onclick = function(e) { e.preventDefault(); closeModal(); nameInput.focus(); };
+                return;
+            }
+
+            if (!eventDateTimeInput.value) { 
+                showModal("inputRequired", "eventDateTimeRequired", "#", "ok");
+                modalActionLink.onclick = function(e) { e.preventDefault(); closeModal(); eventDateTimeInput.focus(); };
+                return;
+            }
+
+            let bookingDetailsText = `${translations[currentLanguage].newCateringInquiry} ${nameInput.value.trim()}:\n`;
+            bookingDetailsText += `${translations[currentLanguage].eventDateTimeLabel} ${new Date(eventDateTimeInput.value).toLocaleString()}\n`; 
+            
+            const selectedPackageRadio = document.querySelector('input[name="package"]:checked');
+            
+            if (selectedPackageRadio.value === 'custom') {
+                if (!customPeopleInput.value || parseInt(customPeopleInput.value) < 56) {
+                     showModal("inputRequired", "customPeopleRequired", "#", "ok");
+                     modalActionLink.onclick = function(e) { e.preventDefault(); closeModal(); customPeopleInput.focus(); };
+                     return;
+                }
+                bookingDetailsText += `${translations[currentLanguage].typeCustomBooking}\n`;
+                bookingDetailsText += `${translations[currentLanguage].numberOfPeople}: ${customPeopleInput.value}\n`;
+                if (customDescriptionInput.value.trim()) {
+                    bookingDetailsText += `${translations[currentLanguage].descriptionRequests}: ${customDescriptionInput.value.trim()}\n`;
+                } else {
+                    bookingDetailsText += `${translations[currentLanguage].descriptionRequests}: ${translations[currentLanguage].customerWillSpecify}\n`;
+                }
+            } else {
+                const packageDetails = selectedPackageRadio.getAttribute(`data-details-${currentLanguage}`);
+                bookingDetailsText += `${translations[currentLanguage].packageSelected}: ${packageDetails}\n`;
+            }
+            
+            bookingDetailsText += `\n${translations[currentLanguage].lookingForward}`;
+
+            const yourWhatsAppNumber = "251982411093"; 
+            const yourTelegramUsername = "banasdecor"; 
+            const yourWebsiteUrlForTelegram = window.location.href; 
+
+            if (platform === 'whatsapp') {
+                const whatsappUrl = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(bookingDetailsText)}`;
+                showModal(
+                    "redirectingWhatsApp",
+                    "bookingDetailsReady",
+                    whatsappUrl,
+                    "proceedToWhatsApp",
+                    `<br><br><div style="text-align:left; white-space: pre-wrap;"><em>${bookingDetailsText}</em></div><br><br>${translations[currentLanguage].clickProceedWhatsApp}`
+                );
+                modalActionLink.onclick = function() { closeModal(); };
+
+            } else if (platform === 'telegram') {
+                const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponent(yourWebsiteUrlForTelegram)}&text=${encodeURIComponent(bookingDetailsText)}`;
+                 showModal(
+                    "redirectingTelegram",
+                    "bookingDetailsReadyTelegram",
+                    telegramShareUrl,
+                    "proceedToTelegram",
+                    `<br><br><div style="text-align:left; white-space: pre-wrap;"><em>${bookingDetailsText}</em></div><br><br>${translations[currentLanguage].clickProceedTelegram}`
+                );
+                modalActionLink.onclick = function() { closeModal(); };
+            }
+        }
+
+        document.getElementById('submitWhatsApp').addEventListener('click', () => handleSubmit('whatsapp'));
+        document.getElementById('submitTelegram').addEventListener('click', () => handleSubmit('telegram'));
+
+        function isAndroid() {
+            return /android/i.test(navigator.userAgent);
+        }
+
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(event) {
+            const onAndroid = isAndroid();
+            if (!onAndroid) {
+                if (event.ctrlKey && (event.key === 'c' || event.key === 'C')) event.preventDefault();
+                if (event.ctrlKey && (event.key === 's' || event.key === 'S')) event.preventDefault();
+                if (event.ctrlKey && (event.key === 'u' || event.key === 'U')) event.preventDefault();
+                if (event.key === 'F12') event.preventDefault();
+                if (event.ctrlKey && event.shiftKey && (event.key === 'i' || event.key === 'I')) event.preventDefault();
+            }
+        });
+
+        document.addEventListener('dragstart', function(event) {
+            event.preventDefault();
+        });
+
+        const popupCharacterEl = document.getElementById('popupCharacter');
+        const characterSpeechBubbleEl = document.getElementById('characterSpeechBubble');
+        const characterModalEl = document.getElementById('characterModal');
+        const characterContinueButtonEl = document.getElementById('characterContinueButton');
+        const characterModalCloseButtonEl = document.getElementById('characterModalCloseButton');
+        const instagramLink = 'https://www.instagram.com/tking_beast?igsh=dmpqdmR5dzlkbTN1';
+        let currentMessageIndex = 0;
+
+        function updateCharacterSpeechBubble() {
+            const messages = translations[currentLanguage].characterClickMessages;
+            if (messages && messages.length > 0) {
+                characterSpeechBubbleEl.textContent = messages[currentMessageIndex];
+                currentMessageIndex = (currentMessageIndex + 1) % messages.length; 
+                characterSpeechBubbleEl.classList.add('show');
+                setTimeout(() => {
+                    characterSpeechBubbleEl.classList.remove('show');
+                }, 3500);
+            }
+        }
+        
+        function startCharacterSpeechInterval() {
+            if (characterMessageInterval) {
+                clearInterval(characterMessageInterval);
+            }
+            updateCharacterSpeechBubble(); 
+            characterMessageInterval = setInterval(updateCharacterSpeechBubble, 10000); 
+        }
+
+
+        popupCharacterEl.addEventListener('click', () => {
+            characterModalEl.style.display = 'flex';
+        });
+
+        characterContinueButtonEl.addEventListener('click', () => {
+            window.open(instagramLink, '_blank');
+            characterModalEl.style.display = 'none';
+        });
+        
+        characterModalCloseButtonEl.addEventListener('click', () => {
+            characterModalEl.style.display = 'none';
+        });
+
+    </script>
+</body>
+</html>
+
